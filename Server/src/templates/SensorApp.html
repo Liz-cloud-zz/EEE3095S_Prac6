@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linda PiServer Interface</title>
+    <link  href="sheets.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Sensor Interface</h1>
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                {% for logs in sensorLog %}
+                <tr>
+                    {% for log in logs %}
+                    <td>{{ log }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+            
+        </table>
+
+        {% if flag=='ON' %}
+        <h1 style="color:forestgreen;" class="clientstatus">{{flag}}</h1>
+        {% else %}
+        <h1 style="color: darkred;" class="clientstatus">{{flag}}</h1>
+        {% endif %}
+        <form method="post" action='/' class="form">
+
+            {% if userInstruction=='Deactivate' %}
+            <input type="submit" value="Activate" name="Activate"class="button">
+            <input type="submit" value="Deactivate" name="Deactivate" class="button" style="background-color: darkred;"/> 
+            {% else %}
+            <input type="submit" value="Activate" name="Activate"class="button" style="background-color:forestgreen;">
+            <input type="submit" value="Deactivate" name="Deactivate" class="button"/> 
+            {% endif %}
+            <input type="submit" value="Check Status" name="Check Status"class="button" style="background-color:chartreuse;">
+            <input type="submit" value="CheckLog" name="CheckLog" class="button" style="background-color:blue"/> 
+            <input type="submit" value="DownloadLog" name="DownloadLog"class="button" style="background-color:gold;">
+            <input type="submit" value="Exit" name="Exit" class="button" style="background-color:darkorange"/> 
+        </form>
+    </div>
+
+</body>
+</html>
